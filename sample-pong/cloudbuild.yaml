@@ -8,5 +8,5 @@ steps:
   - name: openjdk:11
     entrypoint: "./mvnw"
     args: [ "-pl",  "sample-pong", "jib:build", "-Dimage=gcr.io/$PROJECT_ID/sample-pong:$SHORT_SHA" ]
-images:
-  - "gcr.io/$PROJECT_ID/sample-pong:$SHORT_SHA"
+  - name: 'gcr.io/cloud-builders/gcloud'
+    args: [ 'run', 'deploy', "--image=gcr.io/$PROJECT_ID/sample-pong:$SHORT_SHA", '--platform=managed', '--project=$PROJECT_ID', '--region=us-central1', '--allow-unauthenticated', '--memory=256Mi', 'sample-pong' ]
