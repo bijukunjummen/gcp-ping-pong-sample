@@ -19,6 +19,7 @@
 
     <properties>
         <reactor-core.version>3.0.0.RELEASE</reactor-core.version>
+        <imagePrefix></imagePrefix>
     </properties>
 
     <dependencies>
@@ -42,7 +43,7 @@
                 <artifactId>jib-maven-plugin</artifactId>
                 <configuration>
                     <to>
-                        <image>${project.name}:${project.version}</image>
+                        <image>${imagePrefix}/${project.name}:${project.version}</image>
                     </to>
                 </configuration>
             </plugin>

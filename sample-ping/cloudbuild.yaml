@@ -7,5 +7,5 @@ steps:
   args: ["package", "-Dmaven.test.skip=true"]
 - name: openjdk:11
   entrypoint: "../mvnw"
-  args: ["jib:dockerBuild", "-Dimage=gcr.io/$PROJECT_ID/sample-pong:2.0.0-SNAPSHOT"]
-images: ["gcr.io/$PROJECT_ID/sample-pong:2.0.0-SNAPSHOT"]
+  args: ["jib:dockerBuild", "-Dimage=gcr.io/$PROJECT_ID/sample-ping:2.0.0-SNAPSHOT"]
+images: ["gcr.io/$PROJECT_ID/sample-ping:2.0.0-SNAPSHOT"]
