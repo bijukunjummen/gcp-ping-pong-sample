@@ -1,11 +1,12 @@
 steps:
-- name: openjdk:11
-  entrypoint: "./mvnw"
-  args: [ "-pl",  "sample-pong", "test" ]
-- name: openjdk:11
-  entrypoint: "./mvnw"
-  args: [ "-pl",  "sample-pong", "package", "-Dmaven.test.skip=true" ]
-- name: openjdk:11
-  entrypoint: "./mvnw"
-  args: [ "-pl",  "sample-pong", "jib:build", "-Dimage=gcr.io/$PROJECT_ID/sample-pong" ]
-images: [ "gcr.io/$PROJECT_ID/sample-pong" ]
+  - name: openjdk:11
+    entrypoint: "./mvnw"
+    args: [ "-pl",  "sample-pong", "test" ]
+  - name: openjdk:11
+    entrypoint: "./mvnw"
+    args: [ "-pl",  "sample-pong", "package", "-Dmaven.test.skip=true" ]
+  - name: openjdk:11
+    entrypoint: "./mvnw"
+    args: [ "-pl",  "sample-pong", "jib:build", "-Dimage=gcr.io/$PROJECT_ID/sample-pong:$SHORT_SHA" ]
+images:
+  - "gcr.io/$PROJECT_ID/sample-pong:$SHORT_SHA"

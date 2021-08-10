@@ -1,11 +1,12 @@
 steps:
-- name: openjdk:11
-  entrypoint: "./mvnw"
-  args: [ "-pl",  "sample-ping", "test" ]
-- name: openjdk:11
-  entrypoint: "./mvnw"
-  args: [ "-pl",  "sample-ping", "package", "-Dmaven.test.skip=true" ]
-- name: openjdk:11
-  entrypoint: "./mvnw"
-  args: [ "-pl",  "sample-ping", "jib:dockerBuild", "-Dimage=gcr.io/$PROJECT_ID/sample-ping:2.0.0-SNAPSHOT" ]
-images: [ "gcr.io/$PROJECT_ID/sample-ping:2.0.0-SNAPSHOT" ]
+  - name: openjdk:11
+    entrypoint: "./mvnw"
+    args: [ "-pl",  "sample-ping", "test" ]
+  - name: openjdk:11
+    entrypoint: "./mvnw"
+    args: [ "-pl",  "sample-ping", "package", "-Dmaven.test.skip=true" ]
+  - name: openjdk:11
+    entrypoint: "./mvnw"
+    args: [ "-pl",  "sample-ping", "jib:build", "-Dimage=gcr.io/$PROJECT_ID/sample-ping:$SHORT_SHA" ]
+images:
+  - "gcr.io/$PROJECT_ID/sample-ping:$SHORT_SHA"
