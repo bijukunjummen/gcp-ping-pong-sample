@@ -9,4 +9,4 @@ steps:
     entrypoint: "./mvnw"
     args: [ "-pl",  "sample-ping", "jib:build", "-Dimage=gcr.io/$PROJECT_ID/sample-ping:$SHORT_SHA" ]
   - name: 'gcr.io/cloud-builders/gcloud'
-    args: [ 'run', 'deploy', "--image=gcr.io/$PROJECT_ID/sample-ping:$SHORT_SHA", '--platform=managed', '--project=$PROJECT_ID', '--region=us-central1', '--allow-unauthenticated', '--memory=256Mi', 'sample-ping' ]
+    args: [ 'run', 'deploy', "--image=gcr.io/$PROJECT_ID/sample-ping:$SHORT_SHA", '--platform=managed', '--project=$PROJECT_ID', '--region=us-central1', '--allow-unauthenticated', '--memory=256Mi', '--set-env-vars=SPRING_PROFILES_ACTIVE=gcp', 'sample-ping' ]
